@@ -5,7 +5,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "lib": ["ES2017"],
+    "types": ["element-plus/global"]
   },
 
   "references": [

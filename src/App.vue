@@ -14,6 +14,11 @@ body {
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "黑体", Helvetica, Arial, Tahoma, sans-serif;
   font-size: 14px;
   line-height: 18px;
+  user-select: none;
+}
+
+input {
+  outline: none;
 }
 
 input[type="checkbox"] {
@@ -24,6 +29,10 @@ input[type="checkbox"] {
 a {
   color: #3292ff;
   text-decoration: none;
+}
+
+img {
+  vertical-align: top;
 }
 
 .btn {
