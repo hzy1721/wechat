@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Avatar from "../components/Avatar.vue";
-import { readableTime } from "@/assets/ts/utils";
+import { readableTime } from "@/assets/ts/time";
 import { useHomeStore } from "@/stores/home";
 import { storeToRefs } from "pinia";
 

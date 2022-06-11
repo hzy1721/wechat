@@ -20,6 +20,7 @@ import ChatList from "./ChatList.vue";
   display: inline-block;
   vertical-align: top;
   width: 280px;
+  border-right: 1px solid #DEDEDE;
   height: 100%;
   background-color: #F6F6F6;
 

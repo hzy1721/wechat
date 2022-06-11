@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import FirstSideNav from "./firstnav/FirstSideNav.vue";
 import SecondSideNav from "./secondnav/SecondSideNav.vue";
-
+import ChatTab from "./chat/ChatTab.vue";
 </script>
 
 <template>
   <div class="home-view">
     <FirstSideNav />
     <SecondSideNav />
+    <ChatTab />
   </div>
 </template>
 
