@@ -11,7 +11,6 @@ body {
   background-image: url('@/assets/bg_mojave.webp');
   background-size: cover;
   overflow: hidden;
-  font-family: "Hiragino Sans GB", "Microsoft YaHei", "黑体", Helvetica, Arial, Tahoma, sans-serif;
   font-size: 14px;
   line-height: 18px;
   user-select: none;

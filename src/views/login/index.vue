@@ -43,6 +43,7 @@ const errorMessage = ref('');
   border-radius: 10px;
   background-color: #fff;
   color: #333;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "黑体", Helvetica, Arial, Tahoma, sans-serif;
 
   >.title {
     border-radius: 10px 10px 0 0;

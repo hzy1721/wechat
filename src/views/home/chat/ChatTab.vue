@@ -3,6 +3,7 @@ import type { ChatSession } from "@/models/ChatSession";
 import TimeDivider from "./TimeDivider.vue";
 import MessageItem from "./MessageItem.vue";
 import type { Message } from "@/models/Message";
+import SendMessageBar from "./SendMessageBar.vue";
 
 const chat: ChatSession = {
   name: '群聊1',
@@ -17,8 +18,8 @@ const message: Message = {
   userId: '123',
   avatar: '/src/assets/avatar.jpg',
   name: '好友1',
-  text: '谁还没打卡',
-  me: false
+  text: '谁还没打卡谁还没打卡谁还没打卡谁还没打卡谁还没打卡谁还没打卡谁还没打卡谁还没打卡谁还没打卡谁还没打卡谁还没打卡谁还没打卡谁还没打卡谁还没打卡谁还没打卡谁还没打卡谁还没打卡谁还没打卡谁还没打卡谁还没打卡',
+  me: true
 };
 </script>
 
@@ -26,7 +27,7 @@ const message: Message = {
   <div class="chat-tab">
     <div class="header">
       <div class="name">
-        {{ chat.name }}<span v-if="chat.member">({{ chat.member }})</span>
+        {{ chat.name }} <span v-if="chat.member">({{ chat.member }})</span>
       </div>
       <el-icon :size="20" color="#181818" class="menu">
         <MoreFilled />
@@ -39,7 +40,7 @@ const message: Message = {
     </div>
 
     <div class="footer">
-      
+      <SendMessageBar />
     </div>
   </div>
 </template>
