@@ -30,7 +30,7 @@ const errorMessage = ref('');
       </div>
       <div class="button-group">
         <a class="btn btn-primary btn-login">登录</a>
-        <a class="btn btn-default btn-register">注册</a>
+        <a class="btn btn-default btn-register" @click="$router.push('/register')">注册</a>
       </div>
     </div>
   </div>
