@@ -1,11 +1,37 @@
 <script setup lang="ts">
-import { reactive } from 'vue';
+import { computed, reactive } from 'vue';
 
 const form = reactive({
   email: '',
   code: '',
   pass: '',
   passRepeat: '',
+});
+
+const message = computed(() => {
+  const msg = {
+    email: '',
+    code: '',
+    pass: '',
+    passRepeat: '',
+  };
+  if (form.email.length === 0) {
+    msg.email = '请输入邮箱';
+  } else if (!/^.+@([A-Za-z]+\.)+[A-Za-z]+$/.test(form.email)) {
+    msg.email = '请输入正确邮箱';
+  }
+  if (form.code.length === 0) {
+    msg.code = '请输入验证码';
+  } else if (!/^\d{6}$/.test(form.code)) {
+    msg.code = '验证码错误，请填写正确的验证码';
+  }
+  if (form.pass.length === 0) {
+    msg.pass = '请输入密码';
+  }
+  if (form.passRepeat !== form.pass) {
+    msg.passRepeat = '密码输入不一致';
+  }
+  return msg;
 });
 </script>
 
@@ -25,8 +51,8 @@ const form = reactive({
           <input type="text" placeholder="将用作登录账户" v-model="form.email" />
           <button>激活邮箱</button>
         </div>
-        <div class="error-message" v-show="!form.email.length">
-          请填写邮箱
+        <div class="error-message" v-show="message.email">
+          {{ message.email }}
         </div>
       </div>
     </div>
@@ -34,9 +60,9 @@ const form = reactive({
     <div class="input-item">
       <div class="label">验证码</div>
       <div class="right-part">
-        <input type="text" placeholder="请回填邮件中的6位验证码" v-model="form.code" />
-        <div class="error-message" v-show="!form.code.length">
-          请输入验证码
+        <input type="number" placeholder="请回填邮件中的6位验证码" v-model="form.code" />
+        <div class="error-message" v-show="message.code">
+          {{ message.code }}
         </div>
       </div>
     </div>
@@ -45,8 +71,8 @@ const form = reactive({
       <div class="label">密码</div>
       <div class="right-part">
         <input type="password" placeholder="含数字，字母，区分大小写，最短8位" v-model="form.pass" />
-        <div class="error-message" v-show="!form.pass.length">
-          请填写密码
+        <div class="error-message" v-show="message.pass">
+          {{ message.pass }}
         </div>
       </div>
     </div>
@@ -55,8 +81,8 @@ const form = reactive({
       <div class="label">确认密码</div>
       <div class="right-part">
         <input type="password" placeholder="请再次输入密码" v-model="form.passRepeat" />
-        <div class="error-message" v-show="form.pass !== form.passRepeat">
-          密码输入不一致
+        <div class="error-message" v-show="message.passRepeat">
+          {{ message.passRepeat }}
         </div>
       </div>
     </div>
@@ -70,7 +96,7 @@ const form = reactive({
 .register-view {
   box-sizing: border-box;
   width: 900px;
-  padding: 50px 100px 70px 190px;
+  padding: 70px 100px 70px 190px;
   margin: 100px auto;
   background-color: #fff;
   box-shadow: 0 1px 5px 0 rgb(0 0 0 / 5%);
