@@ -25,15 +25,15 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
-      beforeEnter: () => {
-        if (!sessionStorage.getItem('token')) {
-          ElMessage({
-            message: '请先登录',
-            type: 'warning'
-          });
-          return '/login';
-        }
-      }
+      // beforeEnter: () => {
+      //   if (!sessionStorage.getItem('token')) {
+      //     ElMessage({
+      //       message: '请先登录',
+      //       type: 'warning'
+      //     });
+      //     return '/login';
+      //   }
+      // }
     },
     {
       path: '/register',

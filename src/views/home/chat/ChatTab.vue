@@ -29,7 +29,7 @@ const message: Message = {
       <div class="name">
         {{ chat.name }} <span v-if="chat.member">({{ chat.member }})</span>
       </div>
-      <el-icon :size="20" color="#181818" class="menu">
+      <el-icon color="#181818" class="menu">
         <MoreFilled />
       </el-icon>
     </div>
@@ -55,7 +55,7 @@ const message: Message = {
   background-color: #F1F1F1;
 
   >.header {
-    height: 30px;
+    height: 70px;
     padding: 20px;
     border-bottom: 1px solid #DEDEDE;
     display: flex;
@@ -68,7 +68,7 @@ const message: Message = {
     }
 
     >.menu {
-      padding: 5px;
+      font-size: 20px;
     }
   }
 

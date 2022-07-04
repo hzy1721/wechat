@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import Avatar from "../components/Avatar.vue";
-import { readableTime } from "@/assets/ts/time";
+import { readableTime } from "@/scripts/time";
 import { useHomeStore } from "@/stores/home";
 import { storeToRefs } from "pinia";
+import type { ChatSession } from "@/models/ChatSession";
 
 const props = defineProps<{
   chat: ChatSession
@@ -38,7 +39,8 @@ const { activeChatName } = storeToRefs(homeStore);
 
 <style lang="scss">
 .chat-list-item {
-  height: 40px;
+  display: flex;
+  height: 70px;
   padding: 15px;
 
   >.right-content {

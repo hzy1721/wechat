@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 export const useHomeStore = defineStore({
   id: 'home',
   state: () => ({
-    activeFirstNav: 'chat',
+    activeNav: 'chat',
     searchText: '',
     activeChatName: '',
   }),

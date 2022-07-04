@@ -21,18 +21,15 @@ const { searchText } = storeToRefs(homeStore);
 <style lang="scss">
 .search-bar {
   position: relative;
-  display: inline-block;
-  vertical-align: middle;
   width: 190px;
 
-  >.search-icon {
+  .search-icon {
     position: absolute;
     top: 7px;
     left: 7px;
   }
 
-  >input {
-    box-sizing: border-box;
+  input {
     width: 190px;
     height: 30px;
     padding: 0 30px;
@@ -41,7 +38,7 @@ const { searchText } = storeToRefs(homeStore);
     background-color: #e9e9e9;
   }
 
-  >.cancel-icon {
+  .cancel-icon {
     position: absolute;
     top: 7px;
     right: 7px;

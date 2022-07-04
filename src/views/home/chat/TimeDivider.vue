@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { moreReadableTime } from "@/assets/ts/time";
+import { moreReadableTime } from "@/scripts/time";
 
 const props = defineProps<{
   time: Date

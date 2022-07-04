@@ -42,7 +42,7 @@ if (!activeChatName.value) {
 
 <style lang="scss">
 .chat-list {
-  height: 630px;
+  flex: 1;
   overflow-y: auto;
 }
 </style>

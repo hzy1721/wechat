@@ -55,7 +55,7 @@ const props = defineProps({
   }
 
   >.text {
-    max-width: 300px;
+    max-width: 320px;
     font-size: 15px;
     line-height: 20px;
     color: #1B1B1B;

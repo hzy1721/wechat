@@ -1,0 +1,27 @@
+.second-nav {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  height: 100%;
+  border-right: 1px solid var(--border-color);
+  background-color: var(--second-nav-bg-color);
+
+  >.header {
+    display: flex;
+    justify-content: space-around;
+    height: 70px;
+    padding: 20px 10px;
+
+    .button {
+      width: 30px;
+      height: 30px;
+      padding: 7px;
+      background-color: var(--control-bg-color);
+      border-radius: 5px;
+
+      i {
+        font-size: 16px;
+      }
+    }
+  }
+}
