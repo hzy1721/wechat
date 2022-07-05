@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useHomeStore } from "@/stores/home";
+import { storeToRefs } from "pinia";
 import Avatar from "../components/Avatar.vue";
 
 const props = defineProps<{
@@ -6,10 +8,13 @@ const props = defineProps<{
   name: string,
   remark: string
 }>();
+
+const homeStore = useHomeStore();
+const { activeContact } = storeToRefs(homeStore);
 </script>
 
 <template>
-  <div class="new-friend-list-item">
+  <div class="new-friend-list-item" @click="activeContact = `user_wxid_12345`">
     <Avatar :url="avatar" />
     <aside>
       <div class="title">

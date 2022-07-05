@@ -4,6 +4,7 @@ export const useHomeStore = defineStore({
   id: 'home',
   state: () => ({
     activeNav: 'chat',
+    activeContact: 'group_wxgroup_12345',
     searchText: '',
     activeChatName: '',
   }),

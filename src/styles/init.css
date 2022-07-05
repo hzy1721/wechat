@@ -10,6 +10,11 @@
   --icon-color: #B5B5B5;
   --text-dark-color: #8D8D8D;
   --text-light-color: #B7B7B7;
+  --contact-detail-bg-color: #fff;
+  --male-icon-color: #47B6EF;
+  --female-icon-color: #F37E7D;
+  --button-text-color: #fff;
+  --button-bg-color: #05C160;
 }
 
 body {
@@ -19,6 +24,13 @@ body {
   font-size: 14px;
   line-height: 18px;
   user-select: none;
+}
+
+button {
+  color: var(--button-text-color);
+  background-color: var(--button-bg-color);
+  border: none;
+  border-radius: 5px;
 }
 
 input {

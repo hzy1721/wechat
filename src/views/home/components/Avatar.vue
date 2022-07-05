@@ -1,12 +1,19 @@
 <script setup lang="ts">
-const props = defineProps<{
-  url: string
-}>();
+const props = defineProps({
+  url: {
+    type: String,
+    required: true
+  },
+  size: {
+    type: Number,
+    default: 40
+  }
+});
 </script>
 
 <template>
   <div class="avatar">
-    <img :src="url" />
+    <img :src="url" :style="{ width: size + 'px', height: size + 'px' }" />
   </div>
 </template>
 
