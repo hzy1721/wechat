@@ -69,7 +69,7 @@ const errorMessage = ref('');
 
       >input {
         display: block;
-        width: 255px;
+        width: 340px;
         padding: 15px;
         padding-left: 70px;
         outline: none;
@@ -106,13 +106,12 @@ const errorMessage = ref('');
 
     >.button-group {
       padding: 10px 0;
-      margin-right: -20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
 
       >.btn {
-        height: 32px;
-        line-height: 32px;
-        padding: 0 49px;
-        margin-right: 20px;
+        padding: 7px 60px;
       }
     }
   }

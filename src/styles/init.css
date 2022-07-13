@@ -1,4 +1,6 @@
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -15,6 +17,8 @@
   --female-icon-color: #F37E7D;
   --button-text-color: #fff;
   --button-bg-color: #05C160;
+  --success-color: #07c160;
+  --error-color: #fa5151;
 }
 
 body {
