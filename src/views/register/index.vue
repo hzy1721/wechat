@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
 import Schema from "async-validator";
-import { verifyEmail, register } from "@/scripts/api";
+import { verifyEmail, register } from "@/api";
 import { ElMessage } from "element-plus";
 import { useRouter } from "vue-router";
 

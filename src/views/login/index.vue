@@ -1,8 +1,67 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { reactive, ref } from "vue";
+import Schema from "async-validator";
+import { login } from "@/api";
+import { ElMessage } from "element-plus";
+import { useRouter } from "vue-router";
 
+const descriptor = {
+  email: {
+    type: "email",
+    required: true,
+    message: "邮箱格式不正确",
+  },
+  pass: {
+    type: "string",
+    required: true,
+    min: 8,
+    max: 16,
+    message: "密码长度为8-16位",
+  },
+};
+const validator = new Schema(descriptor);
+const form = reactive({
+  email: localStorage.getItem('email') || "",
+  pass: "",
+});
+const router = useRouter();
 const rememberMe = ref(false);
-const errorMessage = ref('');
+async function submitLogin() {
+  try {
+    await validator.validate(form);
+    const res = await login(form);
+    if (res.status === 200) {
+      if (rememberMe.value) {
+        localStorage.setItem('email', form.email);
+      }
+      ElMessage({
+        type: "success",
+        message: "登录成功",
+      });
+      router.push("/");
+    }
+  } catch (err) {
+    if (err.errors) {
+      ElMessage({
+        type: "error",
+        message: err.errors[0].message,
+      });
+    } else if (err.response) {
+      if (err.response.status === 404) {
+        const data = err.response.data;
+        ElMessage({
+          type: "error",
+          message: data.type === "email" ? "邮箱不存在" : "密码错误",
+        });
+      } else {
+        ElMessage({
+          type: "error",
+          message: "网络连接错误",
+        });
+      }
+    }
+  }
+}
 </script>
 
 <template>
@@ -12,11 +71,21 @@ const errorMessage = ref('');
     <div class="form">
       <div class="input-box">
         <div class="label">邮箱</div>
-        <input type="text" placeholder="请填写登录邮箱" style="border-radius: 5px 5px 0 0;" />
+        <input
+          type="text"
+          placeholder="请填写登录邮箱"
+          style="border-radius: 5px 5px 0 0"
+          v-model="form.email"
+        />
       </div>
       <div class="input-box">
         <div class="label">密码</div>
-        <input type="password" placeholder="请填写密码" style="border-radius: 0 0 5px 5px; border-top-color: transparent;" />
+        <input
+          type="password"
+          placeholder="请填写密码"
+          style="border-radius: 0 0 5px 5px; border-top-color: transparent"
+          v-model="form.pass"
+        />
       </div>
       <div class="options">
         <div class="checkbox-box">
@@ -25,12 +94,13 @@ const errorMessage = ref('');
         </div>
         <a href="/forget" class="forget-password">忘记密码</a>
       </div>
-      <div class="error-message" v-show="errorMessage">
-        {{ errorMessage }}
-      </div>
       <div class="button-group">
-        <a class="btn btn-primary btn-login">登录</a>
-        <a class="btn btn-default btn-register" @click="$router.push('/register')">注册</a>
+        <a class="btn btn-primary btn-login" @click="submitLogin">登录</a>
+        <a
+          class="btn btn-default btn-register"
+          @click="$router.push('/register')"
+          >注册</a
+        >
       </div>
     </div>
   </div>
@@ -43,9 +113,10 @@ const errorMessage = ref('');
   border-radius: 10px;
   background-color: #fff;
   color: #333;
-  font-family: "Hiragino Sans GB", "Microsoft YaHei", "黑体", Helvetica, Arial, Tahoma, sans-serif;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "黑体", Helvetica, Arial,
+    Tahoma, sans-serif;
 
-  >.title {
+  > .title {
     border-radius: 10px 10px 0 0;
     background-color: #f4f7f9;
     font-size: 18px;
@@ -54,20 +125,20 @@ const errorMessage = ref('');
     padding-left: 24px;
   }
 
-  >.form {
+  > .form {
     display: block;
     padding: 30px 80px;
 
-    >.input-box {
+    > .input-box {
       position: relative;
 
-      >.label {
+      > .label {
         position: absolute;
         top: 16px;
         left: 21px;
       }
 
-      >input {
+      > input {
         display: block;
         width: 340px;
         padding: 15px;
@@ -78,43 +149,37 @@ const errorMessage = ref('');
       }
     }
 
-    >.options {
+    > .options {
       padding: 10px 0;
       position: relative;
 
-      >.checkbox-box {
+      > .checkbox-box {
         display: inline-block;
         cursor: pointer;
 
-        >label {
+        > label {
           padding-left: 10px;
           cursor: pointer;
           user-select: none;
         }
       }
 
-      >.forget-password {
+      > .forget-password {
         position: absolute;
         right: 0;
       }
     }
 
-    >.error-message {
-      color: #e96262;
-      padding: 10px 0;
-    }
-
-    >.button-group {
+    > .button-group {
       padding: 10px 0;
       width: 100%;
       display: flex;
       justify-content: space-between;
 
-      >.btn {
+      > .btn {
         padding: 7px 60px;
       }
     }
   }
-
 }
 </style>

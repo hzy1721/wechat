@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Avatar from "../components/Avatar.vue";
-import { readableTime } from "@/scripts/time";
+import { readableTime } from "@/utils/time";
 import { useHomeStore } from "@/stores/home";
 import { storeToRefs } from "pinia";
 import type { ChatSession } from "@/models/ChatSession";
