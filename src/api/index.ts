@@ -25,3 +25,7 @@ export async function register(registerDto: RegisterDto) {
 export function login(loginDto: LoginDto) {
   return axios.post('account/login', loginDto);
 }
+
+export function fetchAllMessages(userId: number, afterTime: Date) {
+  return axios.get(`users/${userId}/messages?after=${afterTime}`);
+}

@@ -6,11 +6,29 @@ import ContactNav from "./contact/ContactNav.vue";
 import ContactDetail from "./contact/ContactDetail.vue";
 import { useHomeStore } from "@/stores/home";
 import { storeToRefs } from "pinia";
+import { fetchAllMessages } from "@/api";
+import { db } from "@/stores/db";
 
 import "@/styles/second_nav.scss";
+import { onMounted } from "vue";
 
 const homeStore = useHomeStore();
 const { activeNav } = storeToRefs(homeStore);
+
+onMounted(async () => {
+  const userId = Number(localStorage.getItem('userId')) || undefined;
+  if (!userId) {
+    console.log('userId not defined');
+    return;
+  }
+  const afterTime = new Date(localStorage.getItem('lastFetchTime') || '20000101000000');
+  try {
+    const messages = await fetchAllMessages(userId, afterTime);
+    await db.messages.bulkAdd(messages);
+  } catch (err) {
+    console.log(err);
+  }
+});
 </script>
 
 <template>

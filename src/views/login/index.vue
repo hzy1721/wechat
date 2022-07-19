@@ -92,7 +92,7 @@ async function submitLogin() {
           <input type="checkbox" id="remember-me" v-model="rememberMe" />
           <label for="remember-me">记住账号</label>
         </div>
-        <a href="/forget" class="forget-password">忘记密码</a>
+        <!-- <a href="/forget" class="forget-password">忘记密码</a> -->
       </div>
       <div class="button-group">
         <a class="btn btn-primary btn-login" @click="submitLogin">登录</a>

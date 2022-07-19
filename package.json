@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.4",
+    "@vueuse/rxjs": "^8.9.4",
     "async-validator": "^4.2.5",
     "axios": "^0.27.2",
+    "dexie": "^3.2.2",
     "element-plus": "^2.2.5",
     "fecha": "^4.2.3",
     "normalize.css": "^8.0.1",

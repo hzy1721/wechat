@@ -28,9 +28,9 @@ const chatSessions = [
 ];
 
 const homeStore = useHomeStore();
-const { activeChatName } = storeToRefs(homeStore);
-if (!activeChatName.value) {
-  activeChatName.value = chatSessions[0].name;
+const { activeChat } = storeToRefs(homeStore);
+if (!activeChat.value) {
+  activeChat.value = chatSessions[0].name;
 }
 </script>
 

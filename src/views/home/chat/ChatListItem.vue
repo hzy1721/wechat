@@ -10,11 +10,11 @@ const props = defineProps<{
 }>();
 
 const homeStore = useHomeStore();
-const { activeChatName } = storeToRefs(homeStore);
+const { activeChat } = storeToRefs(homeStore);
 </script>
 
 <template>
-  <div :class="['chat-list-item', {'active': activeChatName === chat.name}]" @click="activeChatName = chat.name">
+  <div :class="['chat-list-item', {'active': activeChat === chat.name}]" @click="activeChat = chat.name">
     <Avatar :url="chat.avatar" />
     <div class="right-content">
       <div class="title">

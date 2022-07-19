@@ -1,7 +1,8 @@
 export interface Message {
-  userId: string;
-  avatar: string;
-  name: string;
+  id: number;
   text: string;
-  me: boolean;
+  time: Date;
+  from: number;
+  to: number;
+  type: string;
 }
